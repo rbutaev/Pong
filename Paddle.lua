@@ -19,3 +19,13 @@ end
 function Paddle:render()
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height)
 end
+
+function Paddle:computer(ball_pos)
+    if self.y > ball_pos then
+        self.dy = -COMP_PADDLE_SPEED
+    elseif self.y < ball_pos - self.height then
+        self.dy = COMP_PADDLE_SPEED
+    else
+        self.dy = 0
+    end
+end
